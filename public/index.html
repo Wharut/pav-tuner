@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pav Tuner - free guitar tuner with every tuning</title>
+  <meta name="description" content="A free, open source guitar, bass and ukulele tuner. Drop D, DADGAD, open tunings and more, all unlocked. No ads, no account, no paywall.">
+  <meta name="theme-color" content="#060a3a">
+  <meta property="og:title" content="Pav Tuner">
+  <meta property="og:description" content="Free, open source tuner. Every tuning unlocked. Tune a string, light a feather.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://tuner.pav.cz/icons/og.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pav Tuner">
+  <link rel="preload" href="/fonts/almendra-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/chakra-petch-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="is-curtained">
+
+<!-- Shared symbols. Icons are Phosphor (bold); illustrations are drawn for this project. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="eye" viewBox="-20 -28 40 56">
+      <ellipse rx="18" ry="26" fill="#3d8d7a" stroke="#0a0a3c" stroke-width="1.5"/>
+      <ellipse cy="2" rx="13" ry="19" fill="#fac409"/>
+      <ellipse cy="4" rx="9.5" ry="13.5" fill="#0091c8"/>
+      <path d="M0-5c6 0 8.500 5.500 8.500 10 0 5-4 8.500-8.500 8.500S-8.500 10-8.500 5c0-4.500 2.500-10 8.500-10z" fill="#001482"/>
+    </symbol>
+    <symbol id="star8" viewBox="-10 -10 20 20">
+      <polygon points="0,-10 1.5,-3.700 7.100,-7.100 3.700,-1.500 10,0 3.700,1.500 7.100,7.100 1.500,3.700 0,10 -1.500,3.700 -7.100,7.100 -3.700,1.500 -10,0 -3.700,-1.500 -7.100,-7.100 -1.500,-3.700"/>
+    </symbol>
+    <!-- A long tail feather, used as decoration on the curtain and stage wings. -->
+    <symbol id="plume" viewBox="0 0 80 300">
+      <path d="M40 300C38 220 40 150 40 70" fill="none" stroke="#0a0a3c" stroke-width="2.500"/>
+      <g fill="none" stroke="#3d8d7a" stroke-width="2.500" stroke-linecap="round">
+        <path d="M40 250c-10-8-18-10-26-8M40 250c10-8 18-10 26-8M40 215c-12-9-22-11-30-8M40 215c12-9 22-11 30-8M40 180c-13-10-24-12-33-8M40 180c13-10 24-12 33-8M40 145c-13-10-25-12-34-7M40 145c13-10 25-12 34-7"/>
+      </g>
+      <ellipse cx="40" cy="62" rx="34" ry="52" fill="#0f5c4a" stroke="#0a0a3c" stroke-width="2"/>
+      <ellipse cx="40" cy="62" rx="26" ry="42" fill="#3d8d7a"/>
+      <ellipse cx="40" cy="66" rx="19" ry="31" fill="#fac409"/>
+      <ellipse cx="40" cy="70" rx="14" ry="22" fill="#0091c8"/>
+      <path d="M40 54c9 0 13 9 13 16 0 8-6 14-13 14s-13-6-13-14c0-7 4-16 13-16z" fill="#001482"/>
+      <ellipse cx="36" cy="64" rx="3" ry="4" fill="#f4ffe4"/>
+    </symbol>
+    <symbol id="i-gear" viewBox="0 0 256 256"><path d="M128,76a52,52,0,1,0,52,52A52.060,52.060,0,0,0,128,76Zm0,80a28,28,0,1,1,28-28A28,28,0,0,1,128,156Zm113.860-49.570A12,12,0,0,0,236,98.340L208.210,82.490l-.110-31.310a12,12,0,0,0-4.250-9.120,116,116,0,0,0-38-21.410,12,12,0,0,0-9.680.890L128,37.270,99.830,21.530a12,12,0,0,0-9.700-.900,116.060,116.060,0,0,0-38,21.470,12,12,0,0,0-4.240,9.100l-.140,31.340L20,98.350a12,12,0,0,0-5.850,8.110,110.700,110.700,0,0,0,0,43.110A12,12,0,0,0,20,157.660l27.820,15.850.110,31.310a12,12,0,0,0,4.250,9.120,116,116,0,0,0,38,21.410,12,12,0,0,0,9.680-.890L128,218.730l28.140,15.740a12,12,0,0,0,9.700.900,116.060,116.060,0,0,0,38-21.470,12,12,0,0,0,4.240-9.100l.140-31.340,27.810-15.810a12,12,0,0,0,5.850-8.110A110.700,110.700,0,0,0,241.860,106.430Zm-22.630,33.180-26.880,15.280a11.940,11.940,0,0,0-4.550,4.590c-.540,1-1.110,1.930-1.700,2.880a12,12,0,0,0-1.830,6.310L184.130,199a91.830,91.830,0,0,1-21.070,11.870l-27.150-15.190a12,12,0,0,0-5.860-1.530h-.290c-1.140,0-2.300,0-3.440,0a12.080,12.080,0,0,0-6.140,1.510L93,210.820A92.270,92.270,0,0,1,71.880,199l-.110-30.240a12,12,0,0,0-1.830-6.320c-.580-.940-1.160-1.910-1.700-2.880A11.920,11.920,0,0,0,63.700,155L36.800,139.630a86.530,86.530,0,0,1,0-23.240l26.880-15.280a12,12,0,0,0,4.550-4.580c.540-1,1.110-1.940,1.700-2.890a12,12,0,0,0,1.830-6.310L71.870,57A91.830,91.830,0,0,1,92.940,45.170l27.150,15.190a11.920,11.920,0,0,0,6.150,1.520c1.140,0,2.300,0,3.440,0a12.080,12.080,0,0,0,6.140-1.510L163,45.180A92.270,92.270,0,0,1,184.120,57l.110,30.240a12,12,0,0,0,1.830,6.320c.580.940,1.160,1.910,1.700,2.880A11.920,11.920,0,0,0,192.300,101l26.900,15.330A86.530,86.530,0,0,1,219.230,139.610Z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 256 256"><path d="M208.490,191.510a12,12,0,0,1-17,17L128,145,64.490,208.490a12,12,0,0,1-17-17L111,128,47.510,64.490a12,12,0,0,1,17-17L128,111l63.510-63.520a12,12,0,0,1,17,17L145,128Z"/></symbol>
+    <symbol id="i-caret" viewBox="0 0 256 256"><path d="M216.490,104.490l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.510-71.520a12,12,0,0,1,17,17Z"/></symbol>
+    <symbol id="i-timer" viewBox="0 0 256 256"><path d="M128,44a96,96,0,1,0,96,96A96.110,96.110,0,0,0,128,44Zm0,168a72,72,0,1,1,72-72A72.080,72.080,0,0,1,128,212ZM164.490,99.510a12,12,0,0,1,0,17l-28,28a12,12,0,0,1-17-17l28-28A12,12,0,0,1,164.490,99.510ZM92,16A12,12,0,0,1,104,4h48a12,12,0,0,1,0,24H104A12,12,0,0,1,92,16Z"/></symbol>
+    <symbol id="i-feather" viewBox="0 0 256 256"><path d="M224.110,31.920A68,68,0,0,0,128,31.870l-70.120,69.300A19.910,19.910,0,0,0,52,115.310V187L23.520,215.510a12,12,0,0,0,17,17L69,204H140.700a19.870,19.870,0,0,0,14.150-5.860l.050,0,69.210-70A68.060,68.060,0,0,0,224.110,31.920Zm-79.210,17A44,44,0,0,1,210,108H165l27.520-27.510a12,12,0,0,0-17-17L124,115V69.540ZM76,117l24-23.720V139L76,163Zm63,63H93l48-48h45.500Z"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 256 256"><path d="M228,128a100,100,0,0,1-98.660,100H128a99.390,99.390,0,0,1-68.620-27.290,12,12,0,0,1,16.480-17.450,76,76,0,1,0-1.570-109c-.130.130-.250.250-.390.370L54.890,92H72a12,12,0,0,1,0,24H24a12,12,0,0,1-12-12V56a12,12,0,0,1,24,0V76.720L57.480,57.060A100,100,0,0,1,228,128Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 256 256"><path d="M212.620,75.170A63.700,63.700,0,0,0,206.390,26,12,12,0,0,0,196,20a63.710,63.710,0,0,0-50,24H126A63.710,63.710,0,0,0,76,20a12,12,0,0,0-10.390,6,63.700,63.700,0,0,0-6.230,49.170A61.500,61.500,0,0,0,52,104v8a60.100,60.100,0,0,0,45.760,58.280A43.660,43.660,0,0,0,92,192v4H76a20,20,0,0,1-20-20,44.050,44.050,0,0,0-44-44,12,12,0,0,0,0,24,20,20,0,0,1,20,20,44.050,44.050,0,0,0,44,44H92v12a12,12,0,0,0,24,0V192a20,20,0,0,1,40,0v40a12,12,0,0,0,24,0V192a43.660,43.660,0,0,0-5.760-21.720A60.100,60.100,0,0,0,220,112v-8A61.500,61.500,0,0,0,212.620,75.170ZM196,112a36,36,0,0,1-36,36H112a36,36,0,0,1-36-36v-8a37.870,37.870,0,0,1,6.130-20.120,11.650,11.650,0,0,0,1.580-11.490,39.900,39.900,0,0,1-.400-27.720,39.870,39.870,0,0,1,26.410,17.800A12,12,0,0,0,119.820,68h32.350a12,12,0,0,0,10.110-5.530,39.840,39.840,0,0,1,26.410-17.800,39.900,39.900,0,0,1-.400,27.720,12,12,0,0,0,1.610,11.530A37.850,37.850,0,0,1,196,104Z"/></symbol>
+    <symbol id="i-mic-off" viewBox="0 0 256 256"><path d="M56.880,39.930A12,12,0,1,0,39.120,56.070L76,96.640V128a52,52,0,0,0,72.110,48l11.260,12.390A67.340,67.340,0,0,1,128,196a68.070,68.070,0,0,1-68-68,12,12,0,0,0-24,0,92.140,92.140,0,0,0,80,91.220V240a12,12,0,0,0,24,0V219.230a90.390,90.390,0,0,0,35.920-12.680l23.200,25.520a12,12,0,0,0,17.760-16.140ZM128,156a28,28,0,0,1-28-28v-5l29.900,32.890C129.270,156,128.640,156,128,156Zm63-2.420A67.630,67.630,0,0,0,196,128a12,12,0,0,1,24,0,91.480,91.480,0,0,1-6.740,34.610,12,12,0,0,1-22.230-9ZM85.700,33.750A52,52,0,0,1,180,64v56.540a12,12,0,0,1-24,0V64a28,28,0,0,0-50.790-16.280,12,12,0,0,1-19.510-14Z"/></symbol>
+  </defs>
+</svg>
+
+<div class="sky" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<div class="app" id="app" inert>
+  <header class="top">
+    <a class="brand" href="/" aria-label="Pav Tuner home">
+      <svg class="brand-eye" aria-hidden="true"><use href="#eye"/></svg>
+      <span>Pav Tuner</span>
+    </a>
+    <button class="pill pill-tuning" id="tuningBtn" type="button" aria-haspopup="dialog">
+      <span class="pill-kicker" id="tuningInstrument">Guitar</span>
+      <span class="pill-main" id="tuningName">Standard</span>
+      <svg class="ico" aria-hidden="true"><use href="#i-caret"/></svg>
+    </button>
+    <div class="seg" role="radiogroup" aria-label="Tuner mode">
+      <button type="button" role="radio" aria-checked="true" data-mode="strings">Strings</button>
+      <button type="button" role="radio" aria-checked="false" data-mode="chromatic">Chromatic</button>
+    </div>
+    <button class="icon-btn" id="settingsBtn" type="button" aria-label="Settings" aria-haspopup="dialog">
+      <svg class="ico" aria-hidden="true"><use href="#i-gear"/></svg>
+    </button>
+  </header>
+
+  <main class="stage" id="stage">
+    <span class="medallion m-tl" aria-hidden="true"><svg><use href="#star8"/></svg></span>
+    <span class="medallion m-tr" aria-hidden="true"><svg><use href="#eye"/></svg></span>
+    <span class="medallion m-bl" aria-hidden="true"><svg><use href="#eye"/></svg></span>
+    <span class="medallion m-br" aria-hidden="true"><svg><use href="#star8"/></svg></span>
+
+    <section class="gauge" aria-label="Tuning meter">
+      <svg id="fan" class="fan" viewBox="0 -16 400 306" role="img" aria-label="Peacock tail meter">
+        <g id="fanFeathers"></g>
+        <text class="fan-mark" x="14" y="286">♭</text>
+        <text class="fan-mark" x="386" y="286" text-anchor="end">♯</text>
+        <g id="needle" class="needle" transform="rotate(0 200 262)">
+          <path d="M200 262 L197 82 L200 60 L203 82 Z"/>
+          <use href="#star8" x="189" y="43" width="22" height="22"/>
+        </g>
+        <!-- The peacock -->
+        <g class="bird" id="bird">
+          <path class="bird-body" d="M200 214c-22 0-44 22-44 54 0 10 2 17 5 22h78c3-5 5-12 5-22 0-32-22-54-44-54z"/>
+          <path class="bird-belly" d="M200 240c-13 0-24 14-24 34 0 6 1 11 3 16h42c2-5 3-10 3-16 0-20-11-34-24-34z"/>
+          <g class="bird-scales">
+            <path d="M186 262q7-9 14 0q7-9 14 0M182 275q9-10 18 0q9-10 18 0"/>
+          </g>
+          <path class="bird-neck" d="M188 226c2-14 0-26-3-38l26-4c4 14 6 28 4 42z"/>
+          <g class="bird-crest">
+            <path d="M192 168 L180 146M199 166 L199 141M206 168 L218 146"/>
+            <circle cx="180" cy="144" r="4.500" class="c1"/>
+            <circle cx="199" cy="139" r="4.500" class="c2"/>
+            <circle cx="218" cy="144" r="4.500" class="c3"/>
+          </g>
+          <path class="bird-beak" d="M213 176l20 8-19 7z"/>
+          <circle class="bird-head" cx="199" cy="181" r="17"/>
+          <g class="bird-eye-open">
+            <ellipse cx="204" cy="178" rx="6.500" ry="7" fill="#f4ffe4" stroke="#0a0a3c" stroke-width="1.500"/>
+            <circle id="pupil" cx="205.500" cy="178.500" r="3" fill="#0a0a3c"/>
+          </g>
+          <path class="bird-eye-happy" d="M198 180q6-8 12 0"/>
+          <path class="bird-cheek" d="M192 187q4 4 9 2"/>
+        </g>
+      </svg>
+
+      <div class="readout">
+        <div class="hud" id="hud">
+          <span class="chip" id="hudFeathers"><svg class="ico" aria-hidden="true"><use href="#i-feather"/></svg><span id="featherCount">0/6</span></span>
+          <span class="chip" id="hudTimer"><svg class="ico" aria-hidden="true"><use href="#i-timer"/></svg><span id="timer">0:00</span></span>
+        </div>
+        <div class="note" aria-hidden="true"><span id="noteName">E</span><sub id="noteOct">2</sub></div>
+        <p class="hint" id="hint" role="status">Pluck a string</p>
+        <p class="cents" id="cents">&nbsp;</p>
+      </div>
+    </section>
+
+    <section class="board" aria-label="Strings">
+      <svg id="head" class="head" viewBox="0 0 400 344"></svg>
+      <div class="chroma" id="chroma" hidden>
+        <ol class="chroma-notes" id="chromaNotes" aria-hidden="true"></ol>
+        <p class="chroma-hz" id="chromaHz">Listening</p>
+      </div>
+      <p class="board-tip" id="boardTip">Tap a peg to hear its note and lock on.</p>
+    </section>
+
+    <div class="mic-error" id="micError" hidden>
+      <svg class="ico" aria-hidden="true"><use href="#i-mic-off"/></svg>
+      <p id="micErrorText">The microphone is blocked. Allow it in your browser settings, then try again.</p>
+      <button class="btn" id="micRetry" type="button">Try again</button>
+    </div>
+  </main>
+
+  <section class="about" id="about">
+    <svg class="about-plume about-plume-l" aria-hidden="true"><use href="#plume"/></svg>
+    <svg class="about-plume about-plume-r" aria-hidden="true"><use href="#plume"/></svg>
+    <h2 class="about-title" id="aboutTitle">Tuning should not cost money. Every tuning here is free, forever.</h2>
+    <p class="about-body">Pav Tuner listens through your microphone and nothing ever leaves your device. No account, no ads, no locked tunings. Pav is Czech for peacock, which explains the feathers.</p>
+    <a class="btn btn-ghost" href="https://github.com/Wharut/pav-tuner" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#i-github"/></svg>Source on GitHub
+    </a>
+  </section>
+</div>
+
+<!-- Tuning picker -->
+<dialog class="sheet" id="tuningDlg" aria-labelledby="tuningDlgTitle">
+  <div class="sheet-head">
+    <h2 id="tuningDlgTitle">Pick your tuning</h2>
+    <button class="icon-btn" type="button" data-close aria-label="Close"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="tabs" role="tablist" id="instrumentTabs"></div>
+  <div class="cards" id="tuningCards"></div>
+</dialog>
+
+<!-- Settings -->
+<dialog class="sheet sheet-small" id="settingsDlg" aria-labelledby="settingsTitle">
+  <div class="sheet-head">
+    <h2 id="settingsTitle">Settings</h2>
+    <button class="icon-btn" type="button" data-close aria-label="Close"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="setting">
+    <div>
+      <span class="setting-label" id="a4Label">Concert pitch</span>
+      <span class="setting-help">Frequency of A4. Most music uses 440 Hz.</span>
+    </div>
+    <div class="stepper" role="group" aria-labelledby="a4Label">
+      <button type="button" id="a4Down" aria-label="Lower concert pitch">-</button>
+      <output id="a4Value">440 Hz</output>
+      <button type="button" id="a4Up" aria-label="Raise concert pitch">+</button>
+    </div>
+  </div>
+  <div class="setting">
+    <div>
+      <span class="setting-label" id="soundLabel">Sounds</span>
+      <span class="setting-help">Reference notes and the chime when a string locks.</span>
+    </div>
+    <button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="soundLabel" id="soundSwitch"><span></span></button>
+  </div>
+  <div class="setting">
+    <div>
+      <span class="setting-label">Start over</span>
+      <span class="setting-help">Clear the feathers and restart the clock.</span>
+    </div>
+    <button class="btn btn-small" type="button" id="resetBtn"><svg class="ico" aria-hidden="true"><use href="#i-reset"/></svg>Reset</button>
+  </div>
+</dialog>
+
+<!-- Win -->
+<dialog class="win" id="winDlg" aria-labelledby="winTitle">
+  <svg class="win-fan" viewBox="0 0 400 230" aria-hidden="true" id="winFan"></svg>
+  <div class="ribbon"><h2 id="winTitle">In tune we trust</h2></div>
+  <p class="win-time"><span id="winTuning">Standard</span> tuned in <strong id="winTime">0:24</strong></p>
+  <p class="win-best" id="winBest">New best time</p>
+  <div class="win-actions">
+    <button class="btn" type="button" id="winAgain">Tune again</button>
+    <button class="btn btn-ghost" type="button" id="winOther">Another tuning</button>
+  </div>
+</dialog>
+
+<!-- Curtain intro -->
+<div class="curtain" id="curtain">
+  <div class="drape drape-l" aria-hidden="true"></div>
+  <div class="drape drape-r" aria-hidden="true"></div>
+  <div class="rope" aria-hidden="true"></div>
+  <div class="valance" aria-hidden="true"></div>
+  <svg class="curtain-star cs-l" aria-hidden="true"><use href="#star8"/></svg>
+  <svg class="curtain-star cs-r" aria-hidden="true"><use href="#star8"/></svg>
+  <svg class="curtain-plume cp-l" aria-hidden="true"><use href="#plume"/></svg>
+  <svg class="curtain-plume cp-r" aria-hidden="true"><use href="#plume"/></svg>
+  <div class="playbill">
+    <svg class="playbill-eye" aria-hidden="true"><use href="#eye"/></svg>
+    <h1>Pav Tuner</h1>
+    <p>A free tuner for guitar, bass and ukulele. Every tuning unlocked.</p>
+    <button class="btn btn-big" id="startBtn" type="button">Start tuning</button>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

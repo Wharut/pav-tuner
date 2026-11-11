@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pav-tuner",
+  "compatibility_date": "2026-11-01",
+  // Static site: everything in ./public is served straight from Cloudflare's edge.
+  "assets": { "directory": "./public" },
+  "routes": [{ "pattern": "tuner.pav.cz", "custom_domain": true }]
+}

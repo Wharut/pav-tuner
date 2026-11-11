@@ -1,0 +1,15 @@
+{
+  "name": "pav-tuner",
+  "version": "1.0.0",
+  "description": "Free, open source instrument tuner with every tuning unlocked. Peacock approved.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "wrangler": "^4.160.0"
+  }
+}

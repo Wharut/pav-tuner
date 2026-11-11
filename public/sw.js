@@ -1,5 +1,5 @@
 // Offline support: serve from cache, refresh the cache in the background.
-const CACHE = 'pav-tuner-v1';
+const CACHE = 'pav-tuner-v2';
 const SHELL = ['/', '/styles.css', '/js/app.js', '/js/pitch.js', '/js/tunings.js', '/js/scene.js', '/js/audio.js', '/js/fx.js',
   '/fonts/almendra-400-normal.woff2', '/fonts/almendra-700-normal.woff2', '/fonts/chakra-petch-400-normal.woff2', '/fonts/chakra-petch-600-normal.woff2',
   '/icons/icon.svg', '/manifest.webmanifest'];

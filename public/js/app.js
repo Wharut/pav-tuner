@@ -493,17 +493,6 @@ function wire() {
   $('startBtn').addEventListener('click', start);
   $('micRetry').addEventListener('click', listen);
 
-  // The statement below the stage lights up word by word as it scrolls into view.
-  const title = $('aboutTitle');
-  const words = title.textContent.trim().split(/\s+/);
-  title.setAttribute('aria-label', title.textContent.trim());
-  title.replaceChildren(...words.flatMap((w) => [Object.assign(document.createElement('span'), { className: 'w', textContent: w, ariaHidden: 'true' }), ' ']));
-  const spans = [...title.querySelectorAll('.w')];
-  new IntersectionObserver(([entry]) => {
-    const lit = Math.round(Math.min(1, entry.intersectionRatio * 1.6) * spans.length);
-    spans.forEach((s, i) => s.classList.toggle('is-lit', i < lit));
-  }, { threshold: Array.from({ length: 21 }, (_, i) => i / 20) }).observe($('about'));
-
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') {
       mic.resume();

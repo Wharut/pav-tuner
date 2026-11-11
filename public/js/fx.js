@@ -1,6 +1,6 @@
 // Tiny canvas particle system for the "feather locked" and "all tuned" moments.
 
-const COLORS = ['#fac409', '#ff37b4', '#49c3f2', '#ff5a14', '#f4ffe4', '#3d8d7a', '#a973f5'];
+const COLORS = ['#fac409', '#ff4422', '#49c3f2', '#ff5a14', '#f4ffe4', '#3d8d7a', '#0091c8'];
 const INK = '#0a0a3c';
 
 export function createFx(canvas) {

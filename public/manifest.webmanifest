@@ -1,7 +1,7 @@
 {
   "name": "Pav Tuner",
   "short_name": "Pav Tuner",
-  "description": "Free, open source tuner for guitar, bass and ukulele. Every tuning unlocked.",
+  "description": "Open source tuner for guitar, bass and ukulele. Every tuning unlocked.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

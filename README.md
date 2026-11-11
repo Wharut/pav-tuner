@@ -1,6 +1,6 @@
 # Pav Tuner
 
-A free, open source tuner for guitar, bass and ukulele. Every tuning is unlocked: Drop D, DADGAD, open tunings, half step down and more. No ads, no account, no paywall.
+An open source tuner for guitar, bass and ukulele. Every tuning is unlocked: Drop D, DADGAD, open tunings, half step down and more. No ads, no account, no paywall.
 
 **Live: https://tuner.pav.cz**
 
